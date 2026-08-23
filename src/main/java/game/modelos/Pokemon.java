@@ -1,6 +1,7 @@
 package game.modelos;
-
 import game.modelos.itens.Item;
+import game.modelos.golpes.Golpe;
+import java.util.Scanner;
 
 public class Pokemon {
     
@@ -18,6 +19,7 @@ public class Pokemon {
     private int specDef;
     private boolean desmaiado;
     private Item itemSegurado;
+    private Golpe[] golpes;
     
     // =======================================================
     
@@ -38,6 +40,7 @@ public class Pokemon {
         this.desmaiado = false;
         this.tipo1 = tipo1;
         this.tipo2 = tipo2;
+        this.golpes = new Golpe[4];
         
     } // FIM DO CONSTRUTOR
     
@@ -59,6 +62,7 @@ public class Pokemon {
         this.specDef = specDef;
         this.desmaiado = false;
         this.tipo1 = tipo1;
+        this.golpes = new Golpe[4];
         
         // Faz com que o segundo tipo seja "Nulo".
         this.tipo2 = TipoElemento.NENHUM;
@@ -155,7 +159,7 @@ public class Pokemon {
     
     // -------------------------------------------------------
 
-    public void curarRevive(int porcentagemCura) {
+    public void curarReviver(int porcentagemCura) {
         
         // Se o pokemon nao desmaiou, nao revive.
         if (this.getHPNow() > 0) {
@@ -189,20 +193,70 @@ public class Pokemon {
     
     public Item pegarSegurar () {
         
-        // Verifica se o Pokemon tem algum item
+        // Verifica se o Pokemon tem algum item.
         if (this.getItemSegurado() == null) {
             System.out.println(this.getName() + " nao esta segurando nenhum item.");
             return null;
         } // FIM DO IF
         
         // Guarda o item numa variavel temporaria,
-        // esvazia a mao e devolve o item
+        // esvazia a mao e devolve o item.
         Item itemDevolvido = this.getItemSegurado();
         this.itemSegurado = null;
         System.out.println("Voce pegou " + itemDevolvido.getNome() + " de " + this.getName() + ".");
         return itemDevolvido;
         
     } // FIM DO PEGAR ITEM SEGURADO PELO POKEMON
+    
+    // -------------------------------------------------------
+    
+    public boolean aprenderGolpe(Golpe novoGolpe) {
+        
+        for (int i = 0; i < this.golpes.length; i++) {
+            
+            // Percorre os 4 slots buscando um espaco vazio.
+            if (this.golpes[i] == null){
+                this.golpes[i] = novoGolpe;
+                System.out.println(this.getName() + " aprendeu " + novoGolpe.getNome() + ".");
+                return true;     // Impede a execucao do restante do metodo.
+            } // FIM DO IF
+            
+        } // FIM DO FOR
+        
+        return false;
+        
+    } // FIM DO APRENDER GOLPE
+    
+    // -------------------------------------------------------
+    
+    public void substituirGolpe(int slot, Golpe novoGolpe) {
+        if (slot < 0 || slot > 3) {
+            System.out.println("Erro do sistema: Tentativa de acessar slot inexistente!");
+            return;
+        } // FIM DO IF
+        
+        Golpe golpeEsquecido = this.golpes[slot];
+        this.golpes[slot] = novoGolpe;
+        
+        System.out.println("1, 2 e... Poof!");
+        System.out.println(this.getName() + " esqueceu " + golpeEsquecido.getNome() + ".");
+        System.out.println("E... " + this.getName() + " aprendeu " + novoGolpe.getNome() + "!");
+        
+    } // FIM DO SUBSTITUIR GOLPE
+    
+    // -------------------------------------------------------
+    
+    public void usarGolpe(int slot, Pokemon alvo) {
+        
+        if (slot < 0 || slot > 3) {
+            System.out.println("Erro do sistema: Tentativa de acessar slot inexistente!");
+            return;
+        } // FIM DO IF
+        
+        Golpe golpeEscolhido = this.golpes[slot];
+        golpeEscolhido.executar(this, alvo);
+        
+    } // FIM DO USAR GOLPE
     
     // =======================================================
 
