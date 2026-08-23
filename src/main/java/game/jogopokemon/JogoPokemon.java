@@ -14,11 +14,23 @@ public class JogoPokemon {
         Pokemon pokemon6 = new Pokemon("Charizard", 40, 78, 100, 84, 109, 78, 85, TipoElemento.FOGO, TipoElemento.VOADOR);
         
         System.out.println("Um " + pokemon6.getName() + " apareceu!");
+        System.out.print("Tipo(s): " + pokemon6.getTipo1());
+        if(pokemon6.getTipo2() == TipoElemento.NENHUM) {
+            System.out.println("");
+        } else {
+            System.out.println(" | " + pokemon6.getTipo2());
+        } // FIM DO IF-ELSE
         System.out.println("Nivel: " + pokemon6.getLevel());
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
         System.out.println("Fainted?: " + pokemon6.isDesmaiado());
         
         System.out.println("Um " + pokemon4.getName() + " apareceu!");
+        System.out.print("Tipo(s): " + pokemon4.getTipo1());
+        if(pokemon4.getTipo2() == TipoElemento.NENHUM) {
+            System.out.println("");
+        } else {
+            System.out.println(" | " + pokemon4.getTipo2());
+        } // FIM DO IF-ELSE
         System.out.println("Nivel: " + pokemon4.getLevel());
         System.out.println("HP: " + pokemon4.getHPNow() + "/" + pokemon4.getHPMax());
         System.out.println("Fainted?: " + pokemon4.isDesmaiado());
