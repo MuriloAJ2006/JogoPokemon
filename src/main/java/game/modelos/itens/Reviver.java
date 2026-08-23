@@ -31,7 +31,7 @@ public class Reviver extends Item {
         System.out.println("Usando " + this.getNome() + " em " + alvo.getName() + ".");
         alvo.curarReviver(this.getPorcentagemCura());
         
-    } // FIM DO USAR POCAO
+    } // FIM DO USAR REVIVER
     
     // =======================================================
     

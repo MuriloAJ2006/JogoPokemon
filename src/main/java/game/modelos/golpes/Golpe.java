@@ -51,7 +51,7 @@ public abstract class Golpe {
     // =======================================================
 
     // METODO ABSTRATO
-    // Os itens podem ser usados de maneiras diferentes.
+    // Ha varios tipos de golpes (dano, buffs/debuffs, clima, etc.)
     public abstract void executar(Pokemon atacante, Pokemon defensor);
     
     // =======================================================
