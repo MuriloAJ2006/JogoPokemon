@@ -1,5 +1,7 @@
 package game.modelos;
 
+import game.modelos.itens.Item;
+
 public class Pokemon {
     
     // ATRIBUTOS
@@ -15,6 +17,7 @@ public class Pokemon {
     private int defense;
     private int specDef;
     private boolean desmaiado;
+    private Item itemSegurado;
     
     // =======================================================
     
@@ -57,7 +60,7 @@ public class Pokemon {
         this.desmaiado = false;
         this.tipo1 = tipo1;
         
-        // Faz com que o segundo tipo seja "Nulo"
+        // Faz com que o segundo tipo seja "Nulo".
         this.tipo2 = TipoElemento.NENHUM;
         
     } // FIM DO CONSTRUTOR
@@ -111,6 +114,9 @@ public class Pokemon {
     public boolean isDesmaiado() {return this.desmaiado;}
     public void setDesmaiado(boolean desmaiado) {this.desmaiado = desmaiado;}
     
+    // Item segurado pelo Pokemon (SOMENTE GETTER)
+    public Item getItemSegurado() {return this.itemSegurado;}
+    
     // =======================================================
 
     // METODOS
@@ -151,17 +157,52 @@ public class Pokemon {
 
     public void curarRevive(int porcentagemCura) {
         
-        // Se o pokemon nao desmaiou, nao revive
+        // Se o pokemon nao desmaiou, nao revive.
         if (this.getHPNow() > 0) {
             System.out.println(this.getName() + " ja esta acordado! Nao foi possivel utilizar o reviver.");
             return;
         } // FIM DO IF
         
-        // Revive o pokemon desmaido
+        // Revive o pokemon desmaido.
         this.setHPNow((this.getHPMax()*porcentagemCura)/100);
         this.setDesmaiado(false);
         
     } // FIM DO CURAR COM REVIVER
+    
+    // -------------------------------------------------------
+    
+    public void darSegurar(Item item) {
+        
+        // Verifica se o Pokemon ja esta segurando um item.
+        if (this.getItemSegurado() != null) {
+            System.out.println(this.getName() + " ja esta segurando " + this.getItemSegurado().getNome() + "!");
+            return;
+        } // FIM DO IF
+        
+        // Dah o item para o Pokemon segurar.
+        this.itemSegurado = item;
+        System.out.println(this.getName() + " agora esta segurando " + this.getItemSegurado().getNome() + ".");
+        
+    } // FIM DO DAR ITEM PARA O POKEMON SEGURAR
+    
+    // -------------------------------------------------------
+    
+    public Item pegarSegurar () {
+        
+        // Verifica se o Pokemon tem algum item
+        if (this.getItemSegurado() == null) {
+            System.out.println(this.getName() + " nao esta segurando nenhum item.");
+            return null;
+        } // FIM DO IF
+        
+        // Guarda o item numa variavel temporaria,
+        // esvazia a mao e devolve o item
+        Item itemDevolvido = this.getItemSegurado();
+        this.itemSegurado = null;
+        System.out.println("Voce pegou " + itemDevolvido.getNome() + " de " + this.getName() + ".");
+        return itemDevolvido;
+        
+    } // FIM DO PEGAR ITEM SEGURADO PELO POKEMON
     
     // =======================================================
 
