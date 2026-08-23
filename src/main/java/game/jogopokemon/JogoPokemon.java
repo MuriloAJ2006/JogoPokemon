@@ -1,6 +1,7 @@
 package game.jogopokemon;
 import game.modelos.Pokemon;
 import game.modelos.TipoElemento;
+import game.modelos.itens.*;
 
 public class JogoPokemon {
 
@@ -10,8 +11,8 @@ public class JogoPokemon {
         
         // Nome, Nivel, HP Maximo, Velocidade,
         // Ataque, Ataque Especial, Defesa, Defesa Especial
-        Pokemon pokemon4 = new Pokemon("Charmander", 10, 39, 65, 52, 60, 43, 50, TipoElemento.FOGO);
         Pokemon pokemon6 = new Pokemon("Charizard", 40, 78, 100, 84, 109, 78, 85, TipoElemento.FOGO, TipoElemento.VOADOR);
+        Item revive = new Reviver("Max Revive", "Revive o Pokemon com 100% de seu HP.", 100);
         
         System.out.println("Um " + pokemon6.getName() + " apareceu!");
         System.out.print("Tipo(s): " + pokemon6.getTipo1());
@@ -24,17 +25,6 @@ public class JogoPokemon {
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
         System.out.println("Fainted?: " + pokemon6.isDesmaiado());
         
-        System.out.println("Um " + pokemon4.getName() + " apareceu!");
-        System.out.print("Tipo(s): " + pokemon4.getTipo1());
-        if(pokemon4.getTipo2() == TipoElemento.NENHUM) {
-            System.out.println("");
-        } else {
-            System.out.println(" | " + pokemon4.getTipo2());
-        } // FIM DO IF-ELSE
-        System.out.println("Nivel: " + pokemon4.getLevel());
-        System.out.println("HP: " + pokemon4.getHPNow() + "/" + pokemon4.getHPMax());
-        System.out.println("Fainted?: " + pokemon4.isDesmaiado());
-        
         System.out.println("\n===== SIMULANDO UM ATAQUE =====");
         
         // Testando o receber dano
@@ -44,16 +34,15 @@ public class JogoPokemon {
         System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
 
         // Testando receber reviver (desmaiado false)
-        System.out.println("Utilizando reviver (30% HP Max)");
-        pokemon6.curarRevive(30);
+        revive.usar(pokemon6);
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
         System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
         
-        // Testando receber pocao (desmaiado false)
+        /* Testando receber pocao (desmaiado false)
         System.out.println("Utilizando pocao (+20 HP)");
         pokemon6.curarPocao(20);
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
-        System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
+        System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");*/
 
         // Testando o receber dano (crítico)
         System.out.println(pokemon6.getName() + " tomou 100 de dano!");
@@ -61,15 +50,14 @@ public class JogoPokemon {
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
         System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
         
-        // Testando receber pocao (desmaiado true)
+        /* Testando receber pocao (desmaiado true)
         System.out.println("Utilizando super pocao (+60 HP)");
         pokemon6.curarPocao(60);
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
-        System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
+        System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");*/
         
         // Testando receber reviver (desmaiado false)
-        System.out.println("Utilizando reviver (30% HP Max)");
-        pokemon6.curarRevive(30);
+        revive.usar(pokemon6);
         System.out.println("HP: " + pokemon6.getHPNow() + "/" + pokemon6.getHPMax());
         System.out.println("Fainted?: " + pokemon6.isDesmaiado() + "\n");
         
