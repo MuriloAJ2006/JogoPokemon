@@ -1,5 +1,4 @@
 package game.modelos.itens;
-
 import game.modelos.Pokemon;
 
 public abstract class Item {
