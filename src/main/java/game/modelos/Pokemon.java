@@ -4,6 +4,8 @@ public class Pokemon {
     
     // ATRIBUTOS
     private String name;
+    private TipoElemento tipo1;
+    private TipoElemento tipo2;
     private int level;
     private int hpNow;
     private int hpMax;
@@ -16,9 +18,10 @@ public class Pokemon {
     
     // =======================================================
     
-    // CONSTRUTOR
+    // CONSTRUTOR - Pokemon de 2 Tipos
     public Pokemon (String name,int level, int hpMax, int speed,
-                    int atack, int specAtk, int defense, int specDef){
+                    int atack, int specAtk, int defense, int specDef,
+                    TipoElemento tipo1, TipoElemento tipo2){
         
         this.name = name;
         this.level = level;
@@ -30,6 +33,32 @@ public class Pokemon {
         this.defense = defense;
         this.specDef = specDef;
         this.desmaiado = false;
+        this.tipo1 = tipo1;
+        this.tipo2 = tipo2;
+        
+    } // FIM DO CONSTRUTOR
+    
+    // -------------------------------------------------------
+
+    // CONSTRUTOR - Pokemon de 2 Tipos
+    public Pokemon (String name,int level, int hpMax, int speed,
+                    int atack, int specAtk, int defense, int specDef,
+                    TipoElemento tipo1){
+        
+        this.name = name;
+        this.level = level;
+        this.hpNow = hpMax;
+        this.hpMax = hpMax;
+        this.speed = speed;
+        this.atack = atack;
+        this.specAtk = specAtk;
+        this.defense = defense;
+        this.specDef = specDef;
+        this.desmaiado = false;
+        this.tipo1 = tipo1;
+        
+        // Faz com que o segundo tipo seja "Nulo"
+        this.tipo2 = TipoElemento.NENHUM;
         
     } // FIM DO CONSTRUTOR
     
@@ -39,6 +68,12 @@ public class Pokemon {
     // Nome do Pokemon
     public String getName() {return this.name;}
     public void setName(String name) {this.name = name;}
+    
+    // Tipos/Elementos do Pokemon
+    public TipoElemento getTipo1() {return this.tipo1;}
+    public void setTipo1(TipoElemento tipo1) {this.tipo1 = tipo1;}
+    public TipoElemento getTipo2() {return this.tipo2;}
+    public void setTipo2(TipoElemento tipo2) {this.tipo2 = tipo2;}
     
     // Nivel do Pokemon
     public int getLevel() {return this.level;}

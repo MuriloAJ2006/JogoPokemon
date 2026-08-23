@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package game.modelos;
 
-/**
- *
- * @author muril
- */
-public class TipoElemento {
-    
+public enum TipoElemento {
+    NORMAL, LUTADOR, VOADOR,
+    VENENOSO, TERRESTRE, PEDRA,
+    INSETO, FANTASMA, ACO,
+    FOGO, AGUA, GRAMA,
+    ELETRICO, PSIQUICO, GELO,
+    DRAGAO, NOTURNO, FADA, NENHUM
 }
