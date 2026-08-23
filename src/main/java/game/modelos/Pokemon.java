@@ -40,7 +40,7 @@ public class Pokemon {
     
     // -------------------------------------------------------
 
-    // CONSTRUTOR - Pokemon de 2 Tipos
+    // CONSTRUTOR - Pokemon de 1 Tipo
     public Pokemon (String name,int level, int hpMax, int speed,
                     int atack, int specAtk, int defense, int specDef,
                     TipoElemento tipo1){
