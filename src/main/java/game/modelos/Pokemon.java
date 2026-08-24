@@ -121,6 +121,17 @@ public class Pokemon {
     // Item segurado pelo Pokemon (SOMENTE GETTER)
     public Item getItemSegurado() {return this.itemSegurado;}
     
+    // Golpes do Pokemon
+    public Golpe getGolpe(int slot) {
+        
+        if (slot < 0 || slot > 3) {
+            return null;
+        } // FIM DO IF
+        
+        return this.golpes[slot];
+        
+    } // FIM DO GETTER DE GOLPES
+    
     // =======================================================
 
     // METODOS

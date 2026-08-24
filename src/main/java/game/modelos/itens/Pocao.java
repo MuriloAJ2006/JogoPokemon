@@ -9,9 +9,9 @@ public class Pocao extends Item {
     // =======================================================
     
     // CONSTRUTOR
-    public Pocao(String nome, String descricao, int poderCura) {
+    public Pocao(String nome, String descricao, int poderCura, int quantidade) {
         
-        super(nome, descricao);
+        super(nome, descricao, CategoriaItem.MEDICINES, quantidade, 999, true);
         this.poderCura = poderCura;
         
     } // FIM DO CONSTRUTOR
@@ -32,6 +32,13 @@ public class Pocao extends Item {
         alvo.curarPocao(this.getPoderCura());
         
     } // FIM DO USAR POCAO
+    
+    @Override
+    public Item clonar() {
+        
+        return new Pocao(this.getNome(), this.getDescricao(), this.poderCura, this.getQuantidade());
+        
+    } // FIM DA CLONAGEM DO ITEM
     
     // =======================================================
     

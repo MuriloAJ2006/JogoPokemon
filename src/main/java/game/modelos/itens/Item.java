@@ -6,14 +6,23 @@ public abstract class Item {
     // ATRIBUTOS
     private String nome;
     private String descricao;
+    private CategoriaItem categoria;
+    private int quantidade;
+    private int limiteStack;
+    private boolean consumivel;
     
     // =======================================================
 
     // CONSTRUTOR
-    public Item(String nome, String descricao) {
+    public Item(String nome, String descricao, CategoriaItem categoria,
+                int quantidade, int limiteStack, boolean consumivel) {
         
         this.nome = nome;
         this.descricao = descricao;
+        this.categoria = categoria;
+        this.quantidade = quantidade;
+        this.limiteStack = limiteStack;
+        this.consumivel = consumivel;
         
     } // FIM DO CONSTRUTOR
 
@@ -28,11 +37,30 @@ public abstract class Item {
     public String getDescricao() {return this.descricao;}
     public void setDescricao(String descricao) {this.descricao = descricao;}
     
+    // Categoria do Item
+    public CategoriaItem getCategoria() {return this.categoria;}
+    public void setCategoria(CategoriaItem categoria) {this.categoria = categoria;}
+    
+    // Quantidade do Item
+    public int getQuantidade() {return this.quantidade;}
+    public void setQuantidade(int quantidade) {this.quantidade = quantidade;}
+    
+    // Limite de Itens por Stack
+    public int getLimiteStack() {return this.limiteStack;}
+    public void setLimiteStack(int limiteStack) {this.limiteStack = limiteStack;}
+    
+    // Se o Item eh Consumivel
+    public boolean isConsumivel() {return this.consumivel;}
+    public void setConsumivel(boolean consumivel) {this.consumivel = consumivel;}
+    
     // =======================================================
 
     // METODO ABSTRATO
     // Os itens podem ser usados de maneiras diferentes.
     public abstract void usar(Pokemon alvo);
+    
+    // Todo item filho deve retornar uma copia de si mesmo.
+    public abstract Item clonar();
     
     // =======================================================
     

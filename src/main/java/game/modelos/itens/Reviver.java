@@ -9,9 +9,9 @@ public class Reviver extends Item {
     // =======================================================
     
     // CONSTRUTOR
-    public Reviver(String nome, String descricao, int porcentagemCura) {
+    public Reviver(String nome, String descricao, int porcentagemCura, int quantidade) {
         
-        super(nome, descricao);
+        super(nome, descricao, CategoriaItem.MEDICINES, quantidade, 999, true);
         this.porcentagemCura = porcentagemCura;
         
     } // FIM DO CONSTRUTOR
@@ -32,6 +32,13 @@ public class Reviver extends Item {
         alvo.curarReviver(this.getPorcentagemCura());
         
     } // FIM DO USAR REVIVER
+    
+    @Override
+    public Item clonar() {
+        
+        return new Reviver(this.getNome(), this.getDescricao(), this.porcentagemCura, this.getQuantidade());
+        
+    } // FIM DA CLONAGEM DO ITEM
     
     // =======================================================
     
