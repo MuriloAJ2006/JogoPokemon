@@ -23,7 +23,7 @@ public class Main {
         
         System.out.println("\nPokemon invocado: " + meuIniciante.getDisplayName());
         System.out.print("Tipo: " + meuIniciante.getSpecies().getPrimaryType());
-        if (meuIniciante.getSpecies().getSecondaryType() != null) {
+        if (meuIniciante.getSpecies().hasSecondaryType()) {
             System.out.println(" / " + meuIniciante.getSpecies().getSecondaryType());
         }
     }
