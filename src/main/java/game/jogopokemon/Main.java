@@ -1,53 +1,30 @@
 package game.jogopokemon;
-import game.modelos.Pokemon;
-import game.modelos.TipoElemento;
-//import game.modelos.itens.*;
-import game.modelos.golpes.*;
 
-public class JogoPokemon {
+import game.database.PokemonDatabase;
+import game.modelos.pokemon.Pokemon;
+import game.modelos.pokemon.PokemonSpecies;
+import game.modelos.pokemon.StatsBlock;
 
+public class Main {
     public static void main(String[] args) {
         
-        System.out.println("===== INICIANDO O JOGO =====");
-        
-        // Nome, Nivel, HP Maximo, Velocidade,
-        // Ataque, Ataque Especial, Defesa, Defesa Especial
-        Pokemon charizard = new Pokemon("Charizard",40,78,100,84,109,78,85,TipoElemento.FOGO,TipoElemento.VOADOR);
-        Pokemon blastoise = new Pokemon("Blastoise",40,79,78,83,85,100,105,TipoElemento.AGUA);
-        
-        System.out.println(charizard.getName() + " VS " + blastoise.getName());
-        
-        System.out.println("===== ENSINANDO GOLPES =====");
-        GolpeDano lancaChamas = new GolpeDano("Lanca-Chamas", "Forte ataque de fogo", TipoElemento.FOGO, 15, 90);
-        GolpeDano arremessoSismico = new GolpeDano("Arremesso Sismico", "Forte ataque lutador", TipoElemento.LUTADOR, 10, 100);
-        
-        charizard.aprenderGolpe(lancaChamas);
-        charizard.aprenderGolpe(arremessoSismico);
-        
-        System.out.println("===== FIGHT TIME =====");
-        System.out.println("Um " + blastoise.getName() + " apareceu!");
-        System.out.println("Nivel: " + blastoise.getLevel() + " | HP: " + blastoise.getHPNow() + "/" + blastoise.getHPMax());
-        
-        System.out.println("\nVai " + charizard.getName() + "!");
-        System.out.println("Nivel: " + charizard.getLevel() + " | HP: " + charizard.getHPNow() + "/" + charizard.getHPMax());
-        
-        charizard.usarGolpe(1, blastoise);
-        
-        System.out.println("===== RESULTADS DO TURNO =====");
-        System.out.println("Blastoise");
-        System.out.println("HP: " + blastoise.getHPNow() + "/" + blastoise.getHPMax());
-        
-        System.out.println("Charizard");
-        System.out.println("HP: " + charizard.getHPNow() + "/" + charizard.getHPMax());
-        for (int i = 0; i < 4; i++) {
-            if (charizard.getGolpe(i) == null) {
-                continue;
-            } // FIM DO IF
-            System.out.println(charizard.getGolpe(i).getNome() + " | PP: " + charizard.getGolpe(i).getPPNow() + "/" + charizard.getGolpe(i).getPPMax());
-        } // FIM DO FOR
+        System.out.println("Iniciando o sistema...");
 
+        // 1. Apenas mandamos o Banco de Dados se carregar!
+        PokemonDatabase.getInstance().carregarDados();
 
+        // 2. Sempre que precisarmos de um Pokémon no jogo, fazemos um pedido simples:
+        PokemonSpecies moldePikachu = PokemonDatabase.getInstance().getEspecie("Pikachu");
+        PokemonSpecies moldeBulbasaur = PokemonDatabase.getInstance().getEspecie("Bulbasaur");
+
+        // 3. Vamos provar que funcionou criando o Bulbasaur!
+        StatsBlock ivs = new StatsBlock(31, 31, 31, 31, 31, 31);
+        Pokemon meuIniciante = new Pokemon(moldeBulbasaur, 5, ivs, false);
         
-    } // FIM DA MAIN
-    
-} // FIM DA CLASSE
+        System.out.println("\nPokemon invocado: " + meuIniciante.getDisplayName());
+        System.out.print("Tipo: " + meuIniciante.getSpecies().getPrimaryType());
+        if (meuIniciante.getSpecies().getSecondaryType() != null) {
+            System.out.println(" / " + meuIniciante.getSpecies().getSecondaryType());
+        }
+    }
+}
