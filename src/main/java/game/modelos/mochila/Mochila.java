@@ -1,4 +1,6 @@
-package game.modelos.itens;
+package game.modelos.mochila;
+import game.modelos.itens.Item;
+import game.modelos.itens.ItemCategory;
 import java.util.ArrayList;
 
 public class Mochila {
@@ -17,7 +19,7 @@ public class Mochila {
     // =======================================================
     
     // METODO AUXILIAR PARA O LIMITE DOS BOLSOS
-    private int getLimiteSlots(CategoriaItem categoria) {
+    private int getLimiteSlots(ItemCategory categoria) {
         
         switch(categoria){
             case Z_CRYSTALS: return 100;
@@ -30,7 +32,7 @@ public class Mochila {
     // =======================================================
     
     // METODO DE BUSCA DE BOLSO
-    public ArrayList<Item> getBolso(CategoriaItem categoria) {
+    public ArrayList<Item> getBolso(ItemCategory categoria) {
         switch(categoria) {
             case MEDICINES: return this.bolsoMedicine;
             case POKEBALLS: return this.bolsoPokeballs;

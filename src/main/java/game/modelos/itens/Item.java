@@ -1,12 +1,12 @@
 package game.modelos.itens;
-import game.modelos.Pokemon;
+import game.modelos.pokemon.Pokemon;
 
 public abstract class Item {
     
     // ATRIBUTOS
     private String nome;
     private String descricao;
-    private CategoriaItem categoria;
+    private ItemCategory categoria;
     private int quantidade;
     private int limiteStack;
     private boolean consumivel;
@@ -14,7 +14,7 @@ public abstract class Item {
     // =======================================================
 
     // CONSTRUTOR
-    public Item(String nome, String descricao, CategoriaItem categoria,
+    public Item(String nome, String descricao, ItemCategory categoria,
                 int quantidade, int limiteStack, boolean consumivel) {
         
         this.nome = nome;
@@ -38,8 +38,8 @@ public abstract class Item {
     public void setDescricao(String descricao) {this.descricao = descricao;}
     
     // Categoria do Item
-    public CategoriaItem getCategoria() {return this.categoria;}
-    public void setCategoria(CategoriaItem categoria) {this.categoria = categoria;}
+    public ItemCategory getCategoria() {return this.categoria;}
+    public void setCategoria(ItemCategory categoria) {this.categoria = categoria;}
     
     // Quantidade do Item
     public int getQuantidade() {return this.quantidade;}

@@ -1,21 +1,21 @@
 package game.modelos.golpes;
-import game.modelos.Pokemon;
-import game.modelos.TipoElemento;
+import game.modelos.pokemon.Pokemon;
+import game.modelos.enums.Type;
 
-public abstract class Golpe {
+public abstract class Move {
     
     // ATRIBUTOS
     private String nome;
     private String descricao;
-    private TipoElemento tipo;
+    private Type tipo;
     private int ppMax;
     private int ppNow;
     
     // =======================================================
 
     // CONSTRUTOR
-    public Golpe(String nome, String descricao,
-                  TipoElemento tipo, int ppMax) {
+    public Move(String nome, String descricao,
+                  Type tipo, int ppMax) {
         
         this.nome = nome;
         this.descricao = descricao;
@@ -37,8 +37,8 @@ public abstract class Golpe {
     public void setDescricao(String descricao) {this.descricao = descricao;}
     
     // Tipo do Golpe
-    public TipoElemento getTipo() {return this.tipo;}
-    public void setTipo (TipoElemento tipo) {this.tipo = tipo;}
+    public Type getTipo() {return this.tipo;}
+    public void setTipo (Type tipo) {this.tipo = tipo;}
     
     // PP Maximo do Golpe
     public int getPPMax() {return this.ppMax;}
