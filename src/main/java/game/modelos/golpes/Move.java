@@ -1,59 +1,31 @@
 package game.modelos.golpes;
-import game.modelos.pokemon.Pokemon;
+
 import game.modelos.enums.Type;
+import game.modelos.enums.MoveCategory;
 
-public abstract class Move {
+public class Move {
     
-    // ATRIBUTOS
-    private String nome;
-    private String descricao;
-    private Type tipo;
-    private int ppMax;
-    private int ppNow;
+    private final String name;
+    private final Type type;
+    private final MoveCategory category;
+    private final int power;
+    private final int accuracy;
+    private final int totalPP;
     
-    // =======================================================
-
-    // CONSTRUTOR
-    public Move(String nome, String descricao,
-                  Type tipo, int ppMax) {
-        
-        this.nome = nome;
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.ppMax = ppMax;
-        this.ppNow = ppMax;
-        
-    } // FIM DO CONSTRUTOR
-
-    // =======================================================
-
-    // GETTERS E SETTERS
-    // Nome do Golpe
-    public String getNome() {return this.nome;}
-    public void setNome(String nome) {this.nome = nome;}
+    public Move(String name, Type type, MoveCategory category, int power, int accuracy, int totalPP) {
+        this.name = name;
+        this.type = type;
+        this.category = category;
+        this.power = power;
+        this.accuracy = accuracy;
+        this.totalPP = totalPP;
+    }
     
-    // Descricao do Golpe
-    public String getDescricao() {return this.descricao;}
-    public void setDescricao(String descricao) {this.descricao = descricao;}
-    
-    // Tipo do Golpe
-    public Type getTipo() {return this.tipo;}
-    public void setTipo (Type tipo) {this.tipo = tipo;}
-    
-    // PP Maximo do Golpe
-    public int getPPMax() {return this.ppMax;}
-    public void setPPMax(int ppMax) {this.ppMax = ppMax;}
-    
-    // PP Atual do Golpe
-    public int getPPNow() {return this.ppNow;}
-    public void setPPNow(int ppNow) {this.ppNow = ppNow;}
-    
-    // =======================================================
-
-    // METODO ABSTRATO
-    // Ha varios tipos de golpes (dano, buffs/debuffs, clima, etc.)
-    public abstract void executar(Pokemon atacante, Pokemon defensor);
-    
-    // =======================================================
+    public String getName() {return name;}
+    public Type getType() {return type;}
+    public MoveCategory getCategory() {return category;}
+    public int getPower() {return power;}
+    public int getAccuracy() {return accuracy;}
+    public int getTotalPP() {return totalPP;}
     
 } // FIM DA CLASSE

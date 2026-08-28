@@ -1,3 +1,34 @@
-{
-    "name": "muril"
-}
+[
+  {
+    "name": "Tackle",
+    "type": "NORMAL",
+    "category": "PHYSICAL",
+    "power": 40,
+    "accuracy": 100,
+    "totalPP": 35
+  },
+  {
+    "name": "Vine Whip",
+    "type": "GRASS",
+    "category": "PHYSICAL",
+    "power": 45,
+    "accuracy": 100,
+    "totalPP": 25
+  },
+  {
+    "name": "Thunder Shock",
+    "type": "ELECTRIC",
+    "category": "SPECIAL",
+    "power": 40,
+    "accuracy": 100,
+    "totalPP": 30
+  },
+  {
+    "name": "Growl",
+    "type": "NORMAL",
+    "category": "STATUS",
+    "power": 0,
+    "accuracy": 100,
+    "totalPP": 40
+  }
+]

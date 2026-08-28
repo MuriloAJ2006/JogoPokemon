@@ -1,6 +1,7 @@
 package game.database;
 
 import game.modelos.pokemon.PokemonSpecies;
+import game.modelos.golpes.Move;
 import com.google.gson.Gson;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
@@ -16,12 +17,16 @@ import java.util.Objects;
 
 public class PokemonDatabase {
     private static PokemonDatabase instance;                // Instancia unica da classe (Singleton).
-    private final Map<String, PokemonSpecies> especiesMap;  // Dicionario para busca rapida.
+    private final Map<String, PokemonSpecies> especiesMap;  // Dicionario para busca rapida das Especies.
+    private final Map<String, Move> movesMap;               // Dicionario para busca rapida dos Moves.
     
     // CONSTRUTOR:
     // ======================================
     // Privado para impedir 'new' fora da classe.
-    private PokemonDatabase() {this.especiesMap = new HashMap<>();}
+    private PokemonDatabase() {
+        this.especiesMap = new HashMap<>();
+        this.movesMap = new HashMap<>();
+    }
     // ======================================
     
     public static PokemonDatabase getInstance() {
@@ -33,7 +38,7 @@ public class PokemonDatabase {
     } // FIM DO GET INSTANCE
     
     // Leh o arquivo JSON e preenche o dicionario na RAM.
-    public void carregarDados() {
+    public void carregarPokemon() {
         
         Gson gson = new Gson(); // Instancia o 'tradutor' (JSON -> Java).
         
@@ -68,5 +73,29 @@ public class PokemonDatabase {
     public PokemonSpecies getEspecie(String nome) {
         return especiesMap.get(nome.toUpperCase());
     } // FIM DO GET ESPECIE
+    
+    public void carregarGolpes() {
+        Gson gson = new Gson();
+        try {
+            Reader reader = new InputStreamReader(
+                Objects.requireNonNull(getClass().getResourceAsStream("/data/moves.json"))
+            );
+            
+            Type listType = new TypeToken<List<Move>>(){}.getType();
+            List<Move> lista = gson.fromJson(reader, listType);
+            
+            for (Move golpe : lista) {
+                movesMap.put(golpe.getName().toUpperCase(), golpe);
+            }
+            System.out.println("Banco de Golpes carregado! Total: " + movesMap.size());
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao carregar golpes: " + e.getMessage());
+        }
+    }
+
+    public Move getGolpe(String nome) {
+        return movesMap.get(nome.toUpperCase());
+    }
     
 } // FIM DA CLASSE
